@@ -29,16 +29,16 @@ type
 
   PWLAN_INTERFACE_INFO_LIST = ptr WLAN_INTERFACE_INFO_LIST
 
-proc *WlanOpenHandle(dwClientVersion: DWORD, pReserved: PVOID, pdwNegotiatedVersion: PDWORD, phClientHandle: PHANDLE): DWORD {.importc, dynlib: "wlanapi", stdcall.}
+proc WlanOpenHandle(dwClientVersion: DWORD, pReserved: PVOID, pdwNegotiatedVersion: PDWORD, phClientHandle: PHANDLE): DWORD {.importc, dynlib: "wlanapi", stdcall.}
 
-proc *WlanEnumInterfaces(
+proc WlanEnumInterfaces(
   hClientHandle: HANDLE, pReserved: PVOID, ppInterfaceList: ptr PWLAN_INTERFACE_INFO_LIST
 ): DWORD {.importc, dynlib: "wlanapi", stdcall.}
 
-proc *WlanGetProfileList(
+proc WlanGetProfileList(
   hClientHandle: HANDLE, pInterfaceGuid: ptr GUID, pReserved: PVOID,
   ppInterfaceList: ptr ptr WLAN_PROFILE_INFO_LIST
 ): DWORD {.importc, dynlib: "wlanapi", stdcall.}
 
-proc *WlanGetProfile(
+proc WlanGetProfile(
     hClientHandle: HANDLE, pInterfaceGuid: ptr GUID, strProfileName : LPCWSTR, pReserved: PVOID , pstrProfileXml : ptr LPWSTR , pdwFlags : ptr DWORD , pdwGrantedAccess : ptr DWORD): DWORD {.importc, dynlib: "wlanapi", stdcall.}
